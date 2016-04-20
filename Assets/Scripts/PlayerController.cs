@@ -15,11 +15,58 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 movement;
 
+    // Movie Texures
+    public MovieTexture walkRight;
+    public MovieTexture idle;
+
     public Rigidbody rb;
+    public Renderer r;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        r = GetComponent<Renderer>();
+        walkRight = (MovieTexture)r.material.mainTexture;
+        idle = (MovieTexture)r.material.mainTexture;
+    }
+
+    void Update()
+    {
+        // Code for the animations
+        // When the horizontal or vertical keys are pressed and held, the animation starts and loops
+        if(Input.GetButton("Horizontal"))
+        {
+            //Stops the animation for idle
+            idle.Pause();
+
+            walkRight.Play();
+            walkRight.loop = true;
+        }
+
+        if(Input.GetButton("Vertical"))
+        {
+            //Stops the animation for idle
+            idle.Pause();
+
+            walkRight.Play();
+            walkRight.loop = true;
+        }
+
+        // When the horizontal or vertical keys are released, the animation stops
+        if (Input.GetButtonUp("Horizontal"))
+        {
+            walkRight.Pause();
+            idle.Play();
+            idle.loop = true;
+        }
+
+        if (Input.GetButtonUp("Vertical"))
+        {
+            walkRight.Pause();
+            idle.Play();
+            idle.loop = true;
+        }
+
     }
 
     // Update is called once per frame
