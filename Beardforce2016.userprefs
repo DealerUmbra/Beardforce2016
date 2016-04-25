@@ -1,8 +1,9 @@
-﻿<Properties StartupItem="Beardforce2016.CSharp.Plugins.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Jockes Stuff\Scripts\CamereFollow.cs">
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ChromaKey.cs">
     <Files>
-      <File FileName="Assets\Jockes Stuff\Scripts\CamereFollow.cs" Line="13" Column="75" />
+      <File FileName="Assets\ChromaKey.cs" Line="6" Column="1" />
+      <File FileName="Assets\Jockes Stuff\Scripts\CamereFollow.cs" Line="13" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

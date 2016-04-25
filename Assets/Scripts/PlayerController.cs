@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 movement;
 
     // Movie Texures
-    public MovieTexture walkRight;
-    public MovieTexture walkLeft;
+    public MovieTexture[] animations;
+    int aniIndex = 0;
 
     public Rigidbody rb;
     public Renderer rend;
@@ -28,11 +28,8 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();
-        walkRight = (MovieTexture)rend.material.mainTexture;
-        walkLeft = (MovieTexture)rend.material.mainTexture;
-        player = GetComponent<GameObject>();
 
-        rend.material.mainTexture = walkLeft;
+        player = GetComponent<GameObject>();
     }
 
     void Update()
@@ -40,47 +37,44 @@ public class PlayerController : MonoBehaviour
         // Code for the animations
         // When the horizontal or vertical keys are pressed and held, the animation starts and loops
 
+        rend.material.mainTexture = animations[aniIndex];
+
         if (Input.GetButtonDown("Right"))
         {
-            if(rend.material.mainTexture = walkLeft)
+            if(aniIndex != 2)
             {
-                rend.material.mainTexture = walkRight;
+                aniIndex = 2;
                 Debug.Log("He's walking right now");
             }
-                
-            walkRight.Play();
-            walkRight.loop = true;
         }
 
         if(Input.GetButtonDown("Left"))
         {
-            if (rend.material.mainTexture == walkRight)
+            if (aniIndex != 1)
             {
-                rend.material.mainTexture = walkLeft;
+                aniIndex = 1;
                 Debug.Log("He's walking left now");
             }
-
-            walkLeft.Play();
-            walkLeft.loop = true;
         }
 
-        if(Input.GetButton("Vertical"))
+        /*if(Input.GetButton("Vertical"))
         {
-            walkRight.Play();
-            walkRight.loop = true;
-        }
+            //Put code for vertical events
+        }*/
 
         // When the horizontal or vertical keys are released, the animation stops
         if (Input.GetButtonUp("Horizontal"))
         {
-            walkRight.Pause();
+            aniIndex = 0;
         }
 
         if (Input.GetButtonUp("Vertical"))
         {
-            walkRight.Pause();
+            aniIndex = 0;
         }
 
+        animations[aniIndex].Play();
+        animations[aniIndex].loop = true;
     }
 
     // Update is called once per frame
