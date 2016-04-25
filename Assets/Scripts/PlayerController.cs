@@ -13,41 +13,59 @@ public class PlayerController : MonoBehaviour
     private float moveY;
     private float moveZ;
 
+    GameObject player;
+
     private Vector3 movement;
 
     // Movie Texures
     public MovieTexture walkRight;
-    public MovieTexture idle;
+    public MovieTexture walkLeft;
 
     public Rigidbody rb;
-    public Renderer r;
+    public Renderer rend;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        r = GetComponent<Renderer>();
-        walkRight = (MovieTexture)r.material.mainTexture;
-        idle = (MovieTexture)r.material.mainTexture;
+        rend = GetComponent<Renderer>();
+        walkRight = (MovieTexture)rend.material.mainTexture;
+        walkLeft = (MovieTexture)rend.material.mainTexture;
+        player = GetComponent<GameObject>();
+
+        rend.material.mainTexture = walkLeft;
     }
 
     void Update()
     {
         // Code for the animations
         // When the horizontal or vertical keys are pressed and held, the animation starts and loops
-        if(Input.GetButton("Horizontal"))
-        {
-            //Stops the animation for idle
-            idle.Pause();
 
+        if (Input.GetButtonDown("Right"))
+        {
+            if(rend.material.mainTexture = walkLeft)
+            {
+                rend.material.mainTexture = walkRight;
+                Debug.Log("He's walking right now");
+            }
+                
             walkRight.Play();
             walkRight.loop = true;
         }
 
+        if(Input.GetButtonDown("Left"))
+        {
+            if (rend.material.mainTexture == walkRight)
+            {
+                rend.material.mainTexture = walkLeft;
+                Debug.Log("He's walking left now");
+            }
+
+            walkLeft.Play();
+            walkLeft.loop = true;
+        }
+
         if(Input.GetButton("Vertical"))
         {
-            //Stops the animation for idle
-            idle.Pause();
-
             walkRight.Play();
             walkRight.loop = true;
         }
@@ -56,15 +74,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonUp("Horizontal"))
         {
             walkRight.Pause();
-            idle.Play();
-            idle.loop = true;
         }
 
         if (Input.GetButtonUp("Vertical"))
         {
             walkRight.Pause();
-            idle.Play();
-            idle.loop = true;
         }
 
     }
