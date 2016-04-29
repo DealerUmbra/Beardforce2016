@@ -13,8 +13,6 @@ public class PlayerController : MonoBehaviour
     private float moveY;
     private float moveZ;
 
-    GameObject player;
-
     private Vector3 movement;
 
     // Movie Texures
@@ -28,8 +26,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();
-
-        player = GetComponent<GameObject>();
     }
 
     void Update()
