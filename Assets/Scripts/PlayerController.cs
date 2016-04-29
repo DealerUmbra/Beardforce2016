@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();
+
+        moveY = 2;
     }
 
     void Update()
@@ -71,6 +73,13 @@ public class PlayerController : MonoBehaviour
 
         animations[aniIndex].Play();
         animations[aniIndex].loop = true;
+
+        // code for jump
+        if (Input.GetButtonDown("Jump"))
+        {
+            Debug.Log("I jumped");
+            transform.Translate(0, moveY, 0, Space.World);
+        }
     }
 
     // Update is called once per frame

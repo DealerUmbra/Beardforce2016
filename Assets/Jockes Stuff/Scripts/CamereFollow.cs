@@ -9,8 +9,6 @@ public class CamereFollow : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        
-        target = GameObject.FindGameObjectWithTag("PlayerDude").transform;
 	}
 	
 	// Update is called once per frame
