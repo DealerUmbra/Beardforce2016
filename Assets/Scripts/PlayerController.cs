@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float gravity;
 
     private float moveX;
-    private float moveY;
+    //private float moveY;
     private float moveZ;
 
     private Vector3 movement;
@@ -26,8 +26,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<Renderer>();
-
-        moveY = 2;
     }
 
     void Update()
@@ -78,7 +76,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             Debug.Log("I jumped");
-            transform.Translate(0, moveY, 0, Space.World);
+            transform.Translate(0, jumpSpeed, 0, Space.World);
         }
     }
 
@@ -91,7 +89,7 @@ public class PlayerController : MonoBehaviour
         moveZ = Input.GetAxis("Vertical");
 
         // Here the all the inputs in X and Z angles are put into the movement function
-        movement = new Vector3(moveX, 0.0f, moveZ);
+        movement = new Vector3(moveX, -gravity, moveZ);
 
         // Here the physics are calculated in rigidbody velocity and movement in X and Z togehter with Speed
         rb.velocity = movement * moveSpeed;
