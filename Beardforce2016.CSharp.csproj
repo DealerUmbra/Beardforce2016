@@ -74,7 +74,9 @@
     <Compile Include="Assets\Jockes Stuff\Scripts\NewBehaviourScript.cs" />
     <Compile Include="Assets\Jockes Stuff\Scripts\PlattformMove.cs" />
     <Compile Include="Assets\Jockes Stuff\Scripts\doorMove.cs" />
+    <Compile Include="Assets\Scripts\KeycardScript.cs" />
     <Compile Include="Assets\Scripts\OnePunch.cs" />
+    <Compile Include="Assets\Scripts\PlayVideo.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
   </ItemGroup>
   <ItemGroup>

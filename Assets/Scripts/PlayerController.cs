@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public float jumpSpeed;
     public float gravity;
 
+    private bool isGrounded;
+
     private float moveX;
     //private float moveY;
     private float moveZ;
@@ -75,8 +77,11 @@ public class PlayerController : MonoBehaviour
         // code for jump
         if (Input.GetButtonDown("Jump"))
         {
-            Debug.Log("I jumped");
-            transform.Translate(0, jumpSpeed, 0, Space.World);
+            if (isGrounded == true)
+            {
+                Debug.Log("I jumped");
+                transform.Translate(0, jumpSpeed, 0, Space.World);
+            }
         }
     }
 
