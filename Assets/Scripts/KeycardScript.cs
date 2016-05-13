@@ -3,12 +3,14 @@ using System.Collections;
 
 public class KeycardScript : MonoBehaviour
 {
+    KeyCardHandlerScript keyCardHandler;
 
 	// Update is called once per frame
-	void OnCollisionEnter (Collision collision)
+	void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collision detected!");
+        //keyCardHandler.Key1 = true;
 
-        Destroy(this);
+        Destroy(gameObject);
 	}
 }
