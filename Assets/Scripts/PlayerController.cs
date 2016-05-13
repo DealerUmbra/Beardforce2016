@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rend = GetComponent<Renderer>();
+        rend = transform.GetChild(0).GetComponent<Renderer>();
     }
 
     void Update()
