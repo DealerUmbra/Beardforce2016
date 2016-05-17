@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
     public float jumpSpeed;
     public float gravity;
 
-    private bool ladder;
+    public bool ladder;
+    public bool grounded;
 
     private float moveX;
     private float moveY;
@@ -29,7 +30,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+<<<<<<< HEAD
+        rend = GetComponent<Renderer>();
+
+        ladder = false;
+=======
         rend = transform.GetChild(0).GetComponent<Renderer>();
+>>>>>>> origin/master
     }
 
     void Update()
@@ -39,96 +46,140 @@ public class PlayerController : MonoBehaviour
 
         rend.material.mainTexture = animations[aniIndex];
 
-        // The movietextures are stored in an array and has certain indexes for which one
-        // to play at the determined commands
+        // If the player is by a ladder then the ladder bool is true and different control is employed
+        // for the player
 
-        // Code for when the player is walking left
-        if (Input.GetButtonDown("Left"))
+        if (ladder == true)
         {
-            // If he's already walking left then he won't walk left again
-            if(aniIndex != 2)
+            if(Input.GetButtonDown("Vertical"))
             {
-                aniIndex = 2;
-                curDirAnimation = aniIndex;
-                Debug.Log("He's walking left now");
+                aniIndex = 4;
+                
             }
         }
-
-        // Code for when the player is walking right
-        if(Input.GetButtonDown("Right"))
+        else
         {
-            // If he's already walking right then he won't walk right again
-            if (aniIndex != 3)
+            // The movietextures are stored in an array and has certain indexes for which one
+            // to play at the determined commands
+
+            // Code for when the player is walking left
+            if (Input.GetButtonDown("Left"))
             {
-                aniIndex = 3;
-                curDirAnimation = aniIndex;
-                Debug.Log("He's walking right now");
+                // If he's already walking left then he won't walk left again
+                if (aniIndex != 2)
+                {
+                    aniIndex = 2;
+                    curDirAnimation = aniIndex;
+                    Debug.Log("He's walking left now");
+                }
+            }
+
+            // Code for when the player is walking right
+            if (Input.GetButtonDown("Right"))
+            {
+                // If he's already walking right then he won't walk right again
+                if (aniIndex != 3)
+                {
+                    aniIndex = 3;
+                    curDirAnimation = aniIndex;
+                    Debug.Log("He's walking right now");
+                }
+            }
+
+            // Here is code for when the player is walking up or down and 
+            // keeps the movietexture for if he is facing left or right
+
+            if (Input.GetButtonDown("Vertical"))
+            {
+                aniIndex = curDirAnimation;
+            }
+
+            // -------------------------------------- Code for when the player is releasing buttons ------------------------------
+            // -------------------------------------------------------------------------------------------------------------------
+
+            // Here's code for when the player is walking up or down
+            if (Input.GetButtonUp("Horizontal"))
+            {
+                // Right
+                if (aniIndex == 2)
+                {
+                    aniIndex = 0;
+                }
+                // Left
+                else if (aniIndex == 3)
+                {
+                    aniIndex = 1;
+                }
+            }
+
+            // Here's code for when the player is walking right or left
+            if (Input.GetButtonUp("Vertical"))
+            {
+                // Right
+                if (aniIndex == 2)
+                {
+                    aniIndex = 0;
+                }
+                // Left
+                else if (aniIndex == 3)
+                {
+                    aniIndex = 1;
+                }
             }
         }
-
-        // Here is code for when the player is walking up or down and 
-        // keeps the movietexture for if he is facing left or right
-
-        if (Input.GetButtonDown("Vertical"))
-        {
-            aniIndex = curDirAnimation;
-        }
-
-        // -------------------------------------- Code for when the player is releasing buttons ------------------------------
-        // -------------------------------------------------------------------------------------------------------------------
-
-        // Here's code for when the player is walking up or down
-        if (Input.GetButtonUp("Horizontal"))
-        {
-            if (aniIndex == 2)
-            {
-                aniIndex = 0;
-            }
-            else if(aniIndex == 3)
-            {
-                aniIndex = 1;
-            }
-        }
-
-        // Here's code for when the player is walking right or left
-        if (Input.GetButtonUp("Vertical"))
-        {
-            if (aniIndex == 2)
-            {
-                aniIndex = 0;
-            }
-            else if (aniIndex == 3)
-            {
-                aniIndex = 1;
-            }
-        }
-
         // --------------------------------- Here the animation is started and looped -------------------------------
         // ----------------------------------------------------------------------------------------------------------
 
-        // Here the code plays the indexed movie texture for the 
-        // player and loops it till he releases the button
+        if (grounded == false)
+        {
+            aniIndex = 5;
+            curDirAnimation = aniIndex;
 
-        animations[aniIndex].Play();
-        animations[aniIndex].loop = true;
+            // Gravity is constantly increasing
+            //gravity += 5;
+        }
+        else if(ladder == true)
+        {
+            // Controls for the animation of the ladder
+            if (Input.GetButtonDown("Vertical"))
+            {
+                animations[aniIndex].Play();
+                animations[aniIndex].loop = true;
+            }
+            if (Input.GetButtonDown("Horizontal"))
+            {
+                animations[aniIndex].loop = false;
+            }
+        }
+            // Here the code plays the indexed movie texture for the 
+            // player and loops it till he releases the button
+
+            animations[aniIndex].Play();
+            animations[aniIndex].loop = true;
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         if (ladder == true)
         {
+            // Controls for when the player is on the ladder
+            moveX = Input.GetAxis("Horizontal");
             moveY = Input.GetAxis("Vertical");
+            moveZ = 0;
         }
         else
         {
             // Here the Input controller is set for the horizontal and vertical movement
             moveX = Input.GetAxis("Horizontal");
+            moveY = -gravity;
             moveZ = Input.GetAxis("Vertical");
         }
 
         // Here the all the inputs in X and Z angles are put into the movement function
-        movement = new Vector3(moveX, -gravity, moveZ);
+        movement = new Vector3(moveX, moveY, moveZ);
 
         // Here the physics are calculated in rigidbody velocity and movement in X and Z togehter with Speed
         rb.velocity = movement * moveSpeed;
