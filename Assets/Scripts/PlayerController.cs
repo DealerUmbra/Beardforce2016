@@ -9,9 +9,13 @@ public class PlayerController : MonoBehaviour
     public float jumpSpeed;
     public float gravity;
 
+    // Variables for detecting if the player
+    // is on the ground or on a ladder
     public bool ladder;
     public bool grounded;
 
+    // Variables for the different axis,
+    // this is later used for directions in movement
     private float moveX;
     private float moveY;
     private float moveZ;
@@ -30,13 +34,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-<<<<<<< HEAD
+
         rend = GetComponent<Renderer>();
 
         ladder = false;
-=======
+
         rend = transform.GetChild(0).GetComponent<Renderer>();
->>>>>>> origin/master
+
     }
 
     void Update()
@@ -94,8 +98,8 @@ public class PlayerController : MonoBehaviour
                 aniIndex = curDirAnimation;
             }
 
-            // -------------------------------------- Code for when the player is releasing buttons ------------------------------
-            // -------------------------------------------------------------------------------------------------------------------
+    // -------------------------------------- Code for when the player is releasing buttons ------------------------------
+    // -------------------------------------------------------------------------------------------------------------------
 
             // Here's code for when the player is walking up or down
             if (Input.GetButtonUp("Horizontal"))
@@ -127,16 +131,17 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        // --------------------------------- Here the animation is started and looped -------------------------------
-        // ----------------------------------------------------------------------------------------------------------
+    // --------------------------------- Here the animation is started and looped ------------------------------------------
+    // ---------------------------------------------------------------------------------------------------------------------
 
-        if (grounded == false)
+        // if the player is on the ground
+        if (grounded == true)
         {
             aniIndex = 5;
             curDirAnimation = aniIndex;
 
             // Gravity is constantly increasing
-            //gravity += 5;
+            gravity += 5;
         }
         else if(ladder == true)
         {
