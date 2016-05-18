@@ -18,4 +18,16 @@ public class KeyCardHandlerScript : MonoBehaviour
             key1 = value;
         }
     }
+
+    void Start()
+    {
+    }
+
+    void OnGUI()
+    {
+        if(key1 == true)
+        {
+            print("Key1 obtained");
+        }
+    }
 }
