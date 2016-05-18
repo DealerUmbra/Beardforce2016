@@ -30,13 +30,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-<<<<<<< HEAD
+
         rend = GetComponent<Renderer>();
 
         ladder = false;
-=======
+
         rend = transform.GetChild(0).GetComponent<Renderer>();
->>>>>>> origin/master
+
     }
 
     void Update()
