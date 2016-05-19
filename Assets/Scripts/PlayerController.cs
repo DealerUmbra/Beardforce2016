@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float gravity;
 
 	[FMODUnity.EventRef]
-	public string footsteps = "event:/footsteps";
+	public string footstep = "event:/footstep";
 
 
     // Variables for detecting if the player
@@ -82,6 +82,8 @@ public class PlayerController : MonoBehaviour
                     aniIndex = 2;
                     curDirAnimation = aniIndex;
                     Debug.Log("He's walking left now");
+
+					FMODUnity.RuntimeManager.PlayOneShot (footstep);
                 }
             }
 
@@ -94,6 +96,8 @@ public class PlayerController : MonoBehaviour
                     aniIndex = 3;
                     curDirAnimation = aniIndex;
                     Debug.Log("He's walking right now");
+
+					FMODUnity.RuntimeManager.PlayOneShot (footstep);
                 }
             }
 
@@ -193,7 +197,7 @@ public class PlayerController : MonoBehaviour
         // Here the all the inputs in X and Z angles are put into the movement function
         movement = new Vector3(moveX, moveY, moveZ);
 
-		FMODUnity.RuntimeManager.PlayOneShot (footsteps);
+
 
         // Here the physics are calculated in rigidbody velocity and movement in X and Z togehter with Speed
         rb.velocity = movement * moveSpeed;
