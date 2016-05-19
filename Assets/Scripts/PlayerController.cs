@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour
     public float jumpSpeed;
     public float gravity;
 
+	[FMODUnity.EventRef]
+	public string footsteps = "event:/footsteps";
+
+
     // Variables for detecting if the player
     // is on the ground or on a ladder
     public bool ladder;
@@ -30,6 +34,9 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody rb;
     public Renderer rend;
+
+
+
 
     void Start()
     {
@@ -185,6 +192,8 @@ public class PlayerController : MonoBehaviour
 
         // Here the all the inputs in X and Z angles are put into the movement function
         movement = new Vector3(moveX, moveY, moveZ);
+
+		FMODUnity.RuntimeManager.PlayOneShot (footsteps);
 
         // Here the physics are calculated in rigidbody velocity and movement in X and Z togehter with Speed
         rb.velocity = movement * moveSpeed;
