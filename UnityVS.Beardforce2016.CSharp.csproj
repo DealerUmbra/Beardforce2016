@@ -80,10 +80,13 @@
     <Compile Include="Assets\Jockes Stuff\Scripts\NewBehaviourScript.cs" />
     <Compile Include="Assets\Jockes Stuff\Scripts\PlattformMove.cs" />
     <Compile Include="Assets\Jockes Stuff\Scripts\doorMove.cs" />
+    <Compile Include="Assets\Scripts\GroundScript.cs" />
+    <Compile Include="Assets\Scripts\KeyCardHandlerScript.cs" />
     <Compile Include="Assets\Scripts\KeycardScript.cs" />
     <Compile Include="Assets\Scripts\OnePunch.cs" />
     <Compile Include="Assets\Scripts\PlayVideo.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\climbScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\ChromaKey.shader" />
