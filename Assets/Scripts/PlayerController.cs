@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
                     curDirAnimation = aniIndex;
                     Debug.Log("He's walking left now");
 
-					FMODUnity.RuntimeManager.PlayOneShot (footstep);
+
                 }
             }
 
@@ -119,11 +119,13 @@ public class PlayerController : MonoBehaviour
                 if (aniIndex == 2)
                 {
                     aniIndex = 0;
+					FMODUnity.RuntimeManager.PlayOneShot(footstep);
                 }
                 // Left
                 else if (aniIndex == 3)
                 {
                     aniIndex = 1;
+					FMODUnity.RuntimeManager.PlayOneShot(footstep);
                 }
             }
 
