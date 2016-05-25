@@ -152,29 +152,33 @@ public class PlayerController : MonoBehaviour
         {
             aniIndex = 5;
             curDirAnimation = aniIndex;
-
+        }
+        else if (grounded == false)
+        {
             // Gravity is constantly increasing
-            gravity += 5;
+            //gravity += 5;
         }
         else if(ladder == true)
         {
             // Controls for the animation of the ladder
             if (Input.GetButtonDown("Vertical"))
             {
-                animations[aniIndex].Play();
-                animations[aniIndex].loop = true;
+                aniIndex = 4;
             }
             if (Input.GetButtonDown("Horizontal"))
             {
                 animations[aniIndex].loop = false;
             }
         }
-            // Here the code plays the indexed movie texture for the 
-            // player and loops it till he releases the button
-
+        // Here the code plays the indexed movie texture for the 
+        // player and loops it till he releases the button
+        if (ladder == false)
+        {
             animations[aniIndex].Play();
             animations[aniIndex].loop = true;
+        }
 
+        //If the player is on the ladder he's 
     }
 
     // Update is called once per frame
