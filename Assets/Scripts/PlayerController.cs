@@ -35,9 +35,6 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     public Renderer rend;
 
-
-
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -202,8 +199,6 @@ public class PlayerController : MonoBehaviour
 
         // Here the all the inputs in X and Z angles are put into the movement function
         movement = new Vector3(moveX, moveY, moveZ);
-
-
 
         // Here the physics are calculated in rigidbody velocity and movement in X and Z togehter with Speed
         rb.velocity = movement * moveSpeed;

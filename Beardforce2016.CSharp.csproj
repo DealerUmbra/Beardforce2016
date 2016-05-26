@@ -61,12 +61,6 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Beardforce2016.CSharp.Plugins.csproj">
@@ -80,6 +74,7 @@
     <Compile Include="Assets\Jockes\Jockes Stuff\Scripts\NewBehaviourScript.cs" />
     <Compile Include="Assets\Jockes\Jockes Stuff\Scripts\PlattformMove.cs" />
     <Compile Include="Assets\Jockes\Jockes Stuff\Scripts\doorMove.cs" />
+    <Compile Include="Assets\Scripts\DoorHandlerScript.cs" />
     <Compile Include="Assets\Scripts\GroundScript.cs" />
     <Compile Include="Assets\Scripts\KeyCardHandlerScript.cs" />
     <Compile Include="Assets\Scripts\KeycardScript.cs" />
