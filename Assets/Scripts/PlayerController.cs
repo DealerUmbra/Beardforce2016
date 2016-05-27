@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
 	[FMODUnity.EventRef]
 	public string footstep = "event:/footstep";
 
-
     // Variables for detecting if the player
     // is on the ground or on a ladder
     public bool ladder;
@@ -28,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
     // Movie Texures
     public MovieTexture[] animations;
-    int aniIndex = 0;
+    public int aniIndex = 0;
 
     private int curDirAnimation;
 
@@ -62,7 +61,6 @@ public class PlayerController : MonoBehaviour
             if(Input.GetButtonDown("Vertical"))
             {
                 aniIndex = 4;
-                
             }
         }
         else
@@ -79,8 +77,6 @@ public class PlayerController : MonoBehaviour
                     aniIndex = 2;
                     curDirAnimation = aniIndex;
                     Debug.Log("He's walking left now");
-
-
                 }
             }
 
@@ -104,6 +100,23 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Vertical"))
             {
                 aniIndex = curDirAnimation;
+            }
+
+            // Animation ode for when the player punches
+            if(Input.GetButtonDown("E"))
+            {
+                // Right
+                if (aniIndex != 1 || aniIndex != 3)
+                {
+                    Debug.Log("IT HAPPENED");
+                    aniIndex = 6;
+                }
+                // Left
+                else if (aniIndex != 0 || aniIndex != 2)
+                {
+                    aniIndex = 7;
+                }
+
             }
 
     // -------------------------------------- Code for when the player is releasing buttons ------------------------------
@@ -140,12 +153,33 @@ public class PlayerController : MonoBehaviour
                     aniIndex = 1;
                 }
             }
+
+            if(Input.GetButtonUp("E"))
+            {
+                // Right
+                if (aniIndex == 2)
+                {
+                    aniIndex = 0;
+                }
+                // Left
+                else if (aniIndex == 3)
+                {
+                    aniIndex = 1;
+                }
+            }
         }
     // --------------------------------- Here the animation is started and looped ------------------------------------------
     // ---------------------------------------------------------------------------------------------------------------------
-
+        
+        // Here the code plays the indexed movie texture for the 
+        // player and loops it till he releases the button
+        if (ladder == false)
+        {
+            animations[aniIndex].Play();
+            animations[aniIndex].loop = true;
+        }
         // if the player is on the ground
-        if (grounded == true)
+        else if (grounded == true)
         {
             aniIndex = 5;
             curDirAnimation = aniIndex;
@@ -160,28 +194,23 @@ public class PlayerController : MonoBehaviour
             // Controls for the animation of the ladder
             if (Input.GetButtonDown("Vertical"))
             {
-                aniIndex = 4;
+                animations[4].Play();
+                animations[4].loop = true;
             }
             if (Input.GetButtonDown("Horizontal"))
             {
                 animations[aniIndex].loop = false;
             }
+            if (Input.GetButtonUp("Vertical"))
+            {
+                animations[aniIndex].loop = false;
+            }
         }
-        // Here the code plays the indexed movie texture for the 
-        // player and loops it till he releases the button
-        if (ladder == false)
-        {
-            animations[aniIndex].Play();
-            animations[aniIndex].loop = true;
-        }
-
-        //If the player is on the ladder he's 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        
         if (ladder == true)
         {
             // Controls for when the player is on the ladder

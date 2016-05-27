@@ -3,7 +3,6 @@ using System.Collections;
 
 public class KeyCardHandlerScript : MonoBehaviour
 {
-    public DoorHandlerScript doorHandler;
 
     public bool[] keys;
 
