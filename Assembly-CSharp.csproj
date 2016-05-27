@@ -50,7 +50,6 @@
      <Compile Include="Assets\Jockes\Jockes Stuff\Scripts\NewBehaviourScript.cs" />
      <Compile Include="Assets\Jockes\Jockes Stuff\Scripts\PlattformMove.cs" />
      <Compile Include="Assets\Jockes\Jockes Stuff\Scripts\doorMove.cs" />
-     <Compile Include="Assets\Scripts\DoorHandlerScript.cs" />
      <Compile Include="Assets\Scripts\GroundScript.cs" />
      <Compile Include="Assets\Scripts\KeyCardHandlerScript.cs" />
      <Compile Include="Assets\Scripts\KeycardScript.cs" />

@@ -6,8 +6,9 @@ public class PlayVideo : MonoBehaviour
     public MovieTexture testTex;
 	
 	// Update is called once per frame
-	void Update ()
+	void Start ()
     {
+        GetComponent<Renderer>().material.mainTexture = testTex;
         testTex.Play();
         testTex.loop = true;
 	}
