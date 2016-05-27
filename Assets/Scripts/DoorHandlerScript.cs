@@ -16,25 +16,13 @@ public class DoorHandlerScript : MonoBehaviour
     public int [] keyList;
 
     //When someone enters the TriggerArea
-    void OnTriggerEnter(Collider Other)
+    public void OnTriggerEnter(Collider Other)
     {
-        enter = true;
-    }
-
-    void OnTriggerExit(Collider Other)
-    {
-        enter = false;
-    }
-
-    public void Door(int key)
-    {
-        if (enter == true)
+        int key = 0;
+        if(keyCardHandler.keys[key] == true)
         {
-            if (doorID == keyList[key])
-            {
-                //The doors opens
-                Debug.Log("The door opened successfully");
-            }
+            //DÖrern öppnas
+            Debug.Log("The door opened successfully");
         }
     }
 }

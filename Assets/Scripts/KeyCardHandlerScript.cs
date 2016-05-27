@@ -7,7 +7,7 @@ public class KeyCardHandlerScript : MonoBehaviour
 
     public bool[] keys;
 
-    private bool key1 = false;
+    public bool key1 = false;
 
     // ---------------------- Properties for all the keys -------------------
     // ----------------------------------------------------------------------
@@ -38,7 +38,7 @@ public class KeyCardHandlerScript : MonoBehaviour
             if (keys[key] == true)
             {
                 GUI.Label(new Rect(10, 10 * key, 100, 20), "Key " + key + " obtained");
-                doorHandler.Door(key);
+                
             }
         }
     }
